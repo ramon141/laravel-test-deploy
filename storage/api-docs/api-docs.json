@@ -1,0 +1,858 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Pro Disciplinas",
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/api"
+        }
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Athentication"
+                ],
+                "summary": "Login",
+                "description": "Route to login to the application",
+                "operationId": "2dd578ff7aba2721293dac66833b27d1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "List of pre-offer"
+                    }
+                }
+            }
+        },
+        "/me": {
+            "post": {
+                "tags": [
+                    "Athentication"
+                ],
+                "summary": "Who i'm?",
+                "description": "Route to return the logged in user",
+                "operationId": "af3b8d149797532336b3d65ef346c917",
+                "responses": {
+                    "200": {
+                        "description": "A User"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Athentication"
+                ],
+                "summary": "Logout",
+                "description": "Make the token invalid",
+                "operationId": "68a6108af04af5e3bc1ea68a6c6f1299",
+                "responses": {
+                    "200": {
+                        "description": "A User"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/refresh": {
+            "post": {
+                "tags": [
+                    "Athentication"
+                ],
+                "summary": "Generate a new token",
+                "description": "Generate a new token",
+                "operationId": "0c3ea3c61aed881016646810460499e9",
+                "responses": {
+                    "200": {
+                        "description": "A User"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/period": {
+            "get": {
+                "tags": [
+                    "/period"
+                ],
+                "summary": "Display a listing of the resource",
+                "description": "Get all period on database",
+                "operationId": "43abf9c9365c4a309078c55423c3cc1b",
+                "responses": {
+                    "200": {
+                        "description": "List of period"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "/period"
+                ],
+                "summary": "Store a newly created resource in storage.",
+                "description": "Post period on database",
+                "operationId": "8f6be959f5053f09e0a98105993b046c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "start_request": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "end_request": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "start_indication": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "end_indication": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "List of period"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/period/{id}": {
+            "get": {
+                "tags": [
+                    "/period"
+                ],
+                "summary": "Display a specified resource",
+                "description": "Show period",
+                "operationId": "342880a73e5934553cd8cdc250c5fc19",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Period id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show period"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "/period"
+                ],
+                "summary": "Update the specified resource in storage.",
+                "description": "Update period on database",
+                "operationId": "5365b76611b541bd4c18166a47d09753",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Period id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "start_request": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "end_request": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "start_indication": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "end_indication": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update of period"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "/period"
+                ],
+                "summary": " Remove the specified resource from storage.",
+                "description": "Remove a period on database",
+                "operationId": "d673774e1b87d7290a563efc2debcb1b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Period Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "period deleted"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/preOffer": {
+            "get": {
+                "tags": [
+                    "/preOffer"
+                ],
+                "summary": "Display a listing of the resource",
+                "description": "Get all pre-offer on database",
+                "operationId": "1751fba8b3184ae0f5fd22df3643f9cf",
+                "responses": {
+                    "200": {
+                        "description": "List of pre-offer"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "/preOffer"
+                ],
+                "summary": "Store a newly created resource in storage.",
+                "description": "Post pre-offer on database",
+                "operationId": "57d1aeca7d3d7e6d1452a5baa2879796",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "shift": {
+                                        "type": "string"
+                                    },
+                                    "formatType": {
+                                        "type": "string"
+                                    },
+                                    "turma_id": {
+                                        "type": "integer"
+                                    },
+                                    "period_id": {
+                                        "type": "integer"
+                                    },
+                                    "discipline_id": {
+                                        "type": "integer"
+                                    },
+                                    "siap_coordenador": {
+                                        "type": "string"
+                                    },
+                                    "this_is_pro_discipline": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "List of pre-offer"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/preOffer/{id}": {
+            "get": {
+                "tags": [
+                    "/preOffer"
+                ],
+                "summary": "Display a specified resource",
+                "description": "Show pre-offer",
+                "operationId": "8da51e3426d9c83942a5040ccee9e39c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "PreOffer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show pre-offer"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "/preOffer"
+                ],
+                "summary": "Update the specified resource in storage.",
+                "description": "Update pre-offer on database",
+                "operationId": "2c630636ed6cee6bfbf151921b484013",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "PreOffer id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "shift": {
+                                        "type": "string"
+                                    },
+                                    "formatType": {
+                                        "type": "string"
+                                    },
+                                    "turma_id": {
+                                        "type": "integer"
+                                    },
+                                    "period_id": {
+                                        "type": "integer"
+                                    },
+                                    "siap_coordenador": {
+                                        "type": "string"
+                                    },
+                                    "this_is_pro_disciplina": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update of pre-offer"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "/preOffer"
+                ],
+                "summary": " Remove the specified resource from storage.",
+                "description": "Remove a pre-offer on database",
+                "operationId": "c68d1151355c47b6b12d6ac4777122cb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "PreOffer Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "pre-offer deleted"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/turma": {
+            "get": {
+                "tags": [
+                    "/turma"
+                ],
+                "summary": "Display a listing of the resource",
+                "description": "Get all turma on database",
+                "operationId": "e89afe2a1d54444861986388893161f1",
+                "responses": {
+                    "200": {
+                        "description": "List of turma"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "/turma"
+                ],
+                "summary": "Store a newly created resource in storage.",
+                "description": "Post turma on database",
+                "operationId": "26fb32b15bfe1687b04f482f1bc9455d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "admission_year": {
+                                        "type": "integer"
+                                    },
+                                    "course_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "List of turma"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/turma/{id}": {
+            "get": {
+                "tags": [
+                    "/turma"
+                ],
+                "summary": "Display a specified resource",
+                "description": "Show turma",
+                "operationId": "ca6db55367ce0e761dfa48e0926d2a77",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Turma id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show turma"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "/turma"
+                ],
+                "summary": "Update the specified resource in storage.",
+                "description": "Update turma on database",
+                "operationId": "e40f3f8d8bc802e6623415b9ea0532b2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Turma id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "admission_year": {
+                                        "type": "integer"
+                                    },
+                                    "course_id": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update of turma"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "/turma"
+                ],
+                "summary": " Remove the specified resource from storage.",
+                "description": "Remove a turma on database",
+                "operationId": "9cb22f34c6b9d4d70b54b9cdcbb5c2ec",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Turma Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "turma deleted"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "/user"
+                ],
+                "summary": "Display a listing of the resource",
+                "description": "Get all users on database",
+                "operationId": "23679253d16f34d2972249751e3631dd",
+                "responses": {
+                    "200": {
+                        "description": "List of users"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "/user"
+                ],
+                "summary": "Store a newly created resource in storage.",
+                "description": "Post user on database",
+                "operationId": "ce3cf31668a69eb39e5e98738715afa1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "profile": {
+                                        "type": "string"
+                                    },
+                                    "institute": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "List of user"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "/user"
+                ],
+                "summary": "Display a specified resource",
+                "description": "Show user",
+                "operationId": "1ec60d4ee968175164a94c21f897f8ea",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show user"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "/user"
+                ],
+                "summary": "Update the specified resource in storage.",
+                "description": "Update user on database",
+                "operationId": "786a794071cb7098f55a4a4911e7d3f0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "profile": {
+                                        "type": "string"
+                                    },
+                                    "institute": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update of user"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "/user"
+                ],
+                "summary": " Remove the specified resource from storage.",
+                "description": "Remove a user on database",
+                "operationId": "a56b12a3694a926699892056cdcf8a9e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "user deleted"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
